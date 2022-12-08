@@ -294,13 +294,6 @@ input[type='email'] {
     height: 4rem;
   }
 }
-/* .name {
-  color: var(--Marine-blue);
-  font-weight: 600;
-  text-transform: capitalize;
-  display: block;
-  font-size: 1.3rem;
-} */
 .container {
   padding-bottom: 5rem;
 }
@@ -323,7 +316,6 @@ input[type='email'] {
     min-height: 40rem;
     grid-template-columns: 300px 1fr;
     border-radius: 10px;
-    border: 10px solid black;
   }
   .btn-container {
     border-radius: 10px;
@@ -427,16 +419,17 @@ input:checked + .slider:before {
   border-radius: 5px;
   border: 3px solid var(--Light-gray);
 }
+.active-single-option {
+  border-color: var(--Purplish-blue);
+  background-color: var(--Magnolia);
+}
+
 @media screen and (min-width: 600px) {
   .single-option {
     grid-template-columns: 40px auto 100px;
   }
 }
 
-.active-single-option {
-  border-color: var(--Purplish-blue);
-  background-color: var(--Magnolia);
-}
 input[type='checkbox'] {
   width: 1.2rem;
   height: 1.2rem;
@@ -454,4 +447,12 @@ input[type='checkbox'] {
   color: var(--Purplish-blue);
   font-weight: 500;
   letter-spacing: 0.05rem;
+}
+
+/* SUMMARY */
+.checkout-pane {
+  margin-top: 3rem;
+  background-color: var(--Light-gray);
+  padding: 1rem;
+  border-radius: 5px;
 }

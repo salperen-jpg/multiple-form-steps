@@ -3,14 +3,18 @@ import Info from './components/Info';
 import AddOns from './components/AddOns';
 import Plan from './components/Plan';
 import Summary from './components/Summary';
+import { addOnsOptionsData } from './components/data';
 function App() {
   const [data, setData] = useState({
     name: '',
     email: '',
     phone: '',
     plan: 'arcade',
+    addOns: [],
   });
+  const [addOnsOptions, setAddOptions] = useState(addOnsOptionsData);
   const [btnIndex, setBtnIndex] = useState(0);
+  const [priceToggle, setPriceToggle] = React.useState(false);
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -18,15 +22,39 @@ function App() {
     if (e.target.name === 'plan') {
       value = e.target.dataset.label;
     }
+    if (e.target.name === 'addOns') {
+      const { id, checked } = e.target;
+      if (checked) {
+        const spec = addOnsOptions.find((sp) => sp.id === Number(id));
+        setData({ ...data, addOns: [...data.addOns, spec] });
+        return;
+      } else {
+        setData({
+          ...data,
+          addOns: data.addOns.filter((f) => f.id !== Number(id)),
+        });
+        return;
+      }
+    }
     setData({ ...data, [name]: value });
   };
 
   //  FORM ELEMENTS
   const formData = [
     <Info {...data} handleChange={handleChange} />,
-    <Plan {...data} handleChange={handleChange} />,
-    <AddOns {...data} handleChange={handleChange} />,
-    <Summary {...data} handleChange={handleChange} />,
+    <Plan
+      {...data}
+      handleChange={handleChange}
+      priceToggle={priceToggle}
+      setPriceToggle={setPriceToggle}
+    />,
+    <AddOns
+      {...data}
+      handleChange={handleChange}
+      addOnsOptions={addOnsOptions}
+      priceToggle={priceToggle}
+    />,
+    <Summary {...data} handleChange={handleChange} priceToggle={priceToggle} />,
   ];
   // BUTTON DATA
   const buttonData = [

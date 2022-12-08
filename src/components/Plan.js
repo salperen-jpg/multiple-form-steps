@@ -1,8 +1,6 @@
 import React from 'react';
 import planDetails from './data';
-const Plan = ({ handleChange, plan }) => {
-  const [priceToggle, setPriceToggle] = React.useState(false);
-
+const Plan = ({ handleChange, plan, priceToggle, setPriceToggle }) => {
   return (
     <form className='plan-form'>
       <h2>select your plan</h2>
