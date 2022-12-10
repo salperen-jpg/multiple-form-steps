@@ -404,7 +404,7 @@ input:checked + .slider:before {
 
 /* OPTIONS */
 .options {
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: grid;
   gap: 2rem;
 }
@@ -426,7 +426,7 @@ input:checked + .slider:before {
 
 @media screen and (min-width: 600px) {
   .single-option {
-    grid-template-columns: 40px auto 100px;
+    grid-template-columns: 40px auto 50px;
   }
 }
 
@@ -452,7 +452,61 @@ input[type='checkbox'] {
 /* SUMMARY */
 .checkout-pane {
   margin-top: 3rem;
-  background-color: var(--Light-gray);
+  background-color: var(--Magnolia);
   padding: 1rem;
   border-radius: 5px;
+}
+
+.checkout-pane header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--Light-gray);
+}
+
+.blue-600 {
+  text-transform: capitalize;
+  color: var(--Marine-blue);
+  font-weight: 600;
+}
+.addOns-info {
+  margin-top: 1rem;
+}
+.checkout-pane article {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+footer {
+  margin-top: 1rem;
+  padding: 1rem;
+  padding-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* THANK YOU */
+.thank-you {
+  padding: 2rem;
+  text-align: center;
+  line-height: 2;
+}
+.thank-you article {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.thank-you h2 {
+  margin: 0;
+}
+.thank-you p {
+  max-width: 30rem;
+}
+.thank-you-image {
+  width: 3rem;
+  margin: 0 auto;
 }

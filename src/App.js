@@ -3,7 +3,14 @@ import Info from './components/Info';
 import AddOns from './components/AddOns';
 import Plan from './components/Plan';
 import Summary from './components/Summary';
-import { addOnsOptionsData } from './components/data';
+import {
+  addOnsOptionsData as addOnsOptions,
+  buttonData,
+} from './components/data';
+import FormButtons from './components/FormButtons';
+import InnerButtons from './components/InnerButtons';
+import BodyButtons from './components/BodyButtons';
+
 function App() {
   const [data, setData] = useState({
     name: '',
@@ -12,10 +19,11 @@ function App() {
     plan: 'arcade',
     addOns: [],
   });
-  const [addOnsOptions, setAddOptions] = useState(addOnsOptionsData);
   const [btnIndex, setBtnIndex] = useState(0);
   const [priceToggle, setPriceToggle] = React.useState(false);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
 
+  // CHANGES
   const handleChange = (e) => {
     const name = e.target.name;
     let value = e.target.value;
@@ -54,14 +62,12 @@ function App() {
       addOnsOptions={addOnsOptions}
       priceToggle={priceToggle}
     />,
-    <Summary {...data} handleChange={handleChange} priceToggle={priceToggle} />,
-  ];
-  // BUTTON DATA
-  const buttonData = [
-    { step: 'step 1', text: 'your info' },
-    { step: 'step 2', text: 'select plan' },
-    { step: 'step 3', text: 'add-ons' },
-    { step: 'step 4', text: 'summary' },
+    <Summary
+      {...data}
+      handleChange={handleChange}
+      priceToggle={priceToggle}
+      isSubmitted={isSubmitted}
+    />,
   ];
 
   const prev = () => {
@@ -80,59 +86,23 @@ function App() {
   return (
     <section>
       <div className='container'>
-        <div className='btn-container'>
-          {buttonData.map((btn, index) => {
-            const { step, text } = btn;
-            return (
-              <div key={index}>
-                <button
-                  className={index === btnIndex ? 'a-btn form-btn' : 'form-btn'}
-                >
-                  {index + 1}
-                </button>
-                <p>
-                  <span className='step'>{step}</span>
-                  <span className='btn-text'>{text}</span>
-                </p>
-              </div>
-            );
-          })}
-        </div>
+        <FormButtons buttonData={buttonData} btnIndex={btnIndex} />
         <div className='form-container'>
           <div>{formData[btnIndex]}</div>
-          <div className='my-inner-buttons'>
-            <div>
-              {btnIndex !== 0 ? (
-                <button type='button' className='btn go-back' onClick={prev}>
-                  go back
-                </button>
-              ) : (
-                <div></div>
-              )}
-
-              <button type='button' className='btn' onClick={next}>
-                next step
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className='general-buttons small-buttons'>
-        <div className='inner-buttons'>
-          {btnIndex !== 0 ? (
-            <button type='button' className='btn  go-back' onClick={prev}>
-              go back
-            </button>
-          ) : (
-            <div></div>
-          )}
-          {btnIndex !== 3 && (
-            <button type='button' className='btn' onClick={next}>
-              next step
-            </button>
+          {!isSubmitted && (
+            <InnerButtons
+              isSubmitted={isSubmitted}
+              setIsSubmitted={setIsSubmitted}
+              btnIndex={btnIndex}
+              prev={prev}
+              next={next}
+            />
           )}
         </div>
       </div>
+      {!isSubmitted && (
+        <BodyButtons btnIndex={btnIndex} prev={prev} next={next} />
+      )}
     </section>
   );
 }

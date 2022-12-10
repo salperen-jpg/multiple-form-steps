@@ -25,4 +25,11 @@ export const addOnsOptionsData = [
   },
 ];
 
+export const buttonData = [
+  { step: 'step 1', text: 'your info' },
+  { step: 'step 2', text: 'select plan' },
+  { step: 'step 3', text: 'add-ons' },
+  { step: 'step 4', text: 'summary' },
+];
+
 export default planDetails;
