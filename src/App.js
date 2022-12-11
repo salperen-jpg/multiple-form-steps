@@ -105,11 +105,16 @@ function App() {
               handleSubmit={handleSubmit}
             />
           )}
+          {!isSubmitted && (
+            <BodyButtons
+              btnIndex={btnIndex}
+              prev={prev}
+              next={next}
+              handleSubmit={handleSubmit}
+            />
+          )}
         </form>
       </div>
-      {!isSubmitted && (
-        <BodyButtons btnIndex={btnIndex} prev={prev} next={next} />
-      )}
     </section>
   );
 }

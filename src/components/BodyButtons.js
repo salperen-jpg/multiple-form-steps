@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BodyButtons = ({ btnIndex, prev, next }) => {
+const BodyButtons = ({ btnIndex, prev, next, handleSubmit }) => {
   return (
     <div className='general-buttons small-buttons'>
       <div className='inner-buttons'>
@@ -12,7 +12,7 @@ const BodyButtons = ({ btnIndex, prev, next }) => {
           <div></div>
         )}
         {btnIndex !== 3 && (
-          <button type='submit' className='btn' onClick={next}>
+          <button type='submit' className='btn'>
             next step
           </button>
         )}
