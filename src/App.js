@@ -23,6 +23,12 @@ function App() {
   const [priceToggle, setPriceToggle] = React.useState(false);
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('I am here');
+    next();
+  };
+
   // CHANGES
   const handleChange = (e) => {
     const name = e.target.name;
@@ -49,7 +55,7 @@ function App() {
 
   //  FORM ELEMENTS
   const formData = [
-    <Info {...data} handleChange={handleChange} />,
+    <Info {...data} handleChange={handleChange} handleSubmit={handleSubmit} />,
     <Plan
       {...data}
       handleChange={handleChange}
@@ -87,7 +93,7 @@ function App() {
     <section>
       <div className='container'>
         <FormButtons buttonData={buttonData} btnIndex={btnIndex} />
-        <div className='form-container'>
+        <form className='form-container' onSubmit={handleSubmit}>
           <div>{formData[btnIndex]}</div>
           {!isSubmitted && (
             <InnerButtons
@@ -96,9 +102,10 @@ function App() {
               btnIndex={btnIndex}
               prev={prev}
               next={next}
+              handleSubmit={handleSubmit}
             />
           )}
-        </div>
+        </form>
       </div>
       {!isSubmitted && (
         <BodyButtons btnIndex={btnIndex} prev={prev} next={next} />

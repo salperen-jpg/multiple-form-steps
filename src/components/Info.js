@@ -2,7 +2,7 @@ import React from 'react';
 import Row from './Row';
 const Info = ({ name, email, phone, handleChange }) => {
   return (
-    <form>
+    <div>
       <h2>Personal Info</h2>
       <p>Please provide your name,email,address,and phone number</p>
       <Row
@@ -26,7 +26,7 @@ const Info = ({ name, email, phone, handleChange }) => {
         handlerChange={handleChange}
         placeholder='e.g +1 234 567 890'
       />
-    </form>
+    </div>
   );
 };
 

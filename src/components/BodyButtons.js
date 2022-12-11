@@ -12,7 +12,7 @@ const BodyButtons = ({ btnIndex, prev, next }) => {
           <div></div>
         )}
         {btnIndex !== 3 && (
-          <button type='button' className='btn' onClick={next}>
+          <button type='submit' className='btn' onClick={next}>
             next step
           </button>
         )}

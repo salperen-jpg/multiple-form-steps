@@ -6,6 +6,7 @@ const InnerButtons = ({
   btnIndex,
   prev,
   next,
+  handleSubmit,
 }) => {
   return (
     <div className='my-inner-buttons'>
@@ -26,7 +27,7 @@ const InnerButtons = ({
             submit
           </button>
         ) : (
-          <button type='button' className='btn' onClick={next}>
+          <button type='submit' className='btn'>
             next step
           </button>
         )}

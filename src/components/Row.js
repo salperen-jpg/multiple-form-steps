@@ -5,10 +5,12 @@ const Row = ({ type, name, value, handlerChange, placeholder }) => {
       <input
         type={type}
         placeholder={placeholder || ''}
+        id={name}
         name={name}
         value={value}
         onChange={handlerChange}
-      ></input>
+        required
+      />
     </div>
   );
 };

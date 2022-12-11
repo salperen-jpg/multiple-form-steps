@@ -2,7 +2,7 @@ import React from 'react';
 import planDetails from './data';
 const Plan = ({ handleChange, plan, priceToggle, setPriceToggle }) => {
   return (
-    <form className='plan-form'>
+    <div className='plan-form'>
       <h2>select your plan</h2>
       <p>You have the option of monthly or yearly billing</p>
       <div className='btns'>
@@ -44,7 +44,7 @@ const Plan = ({ handleChange, plan, priceToggle, setPriceToggle }) => {
 
         <span className={`${priceToggle ? 'setColor' : ''}`}>Yearly</span>
       </div>
-    </form>
+    </div>
   );
 };
 
